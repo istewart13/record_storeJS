@@ -18,5 +18,9 @@ describe('Record Collector', function(){
     assert.equal("Iain", recordcollector1.name);
   })
 
+  it('record collector has money', function(){
+    assert.equal(85, recordcollector1.money);
+  })
+
 
 });
