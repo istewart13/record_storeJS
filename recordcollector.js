@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var RecordCollector = function(name, money) {
   this.name = name;
   this.money = money;
@@ -15,8 +17,10 @@ RecordCollector.prototype = {
       this.collection.push(record);
     }
   },
-  sellRecord: function() {
-
+  sellRecord: function(record, recordStore) {
+    this.collection.splice(_.indexOf(this.inventory, record), 1);
+    recordStore.buyRecord(record);
+    this.money += record.price;
   }
 }
 
