@@ -41,7 +41,7 @@ var assert = require('chai').assert;
       assert.equal("Record 1:\nBon Iver - Bon Iver - 7.5\nRecord 2:\nGaslight Anthem - American Slang - 8.5\n", recordstore1.listInventory());
     })
 
-    it('cash balance is updated when inventory is sold', function(){
+    it('cash balance is increased when inventory is sold', function(){
       recordstore1.addRecord(record1);
       recordstore1.addRecord(record2);
       recordstore1.sellRecord(record1);
@@ -62,6 +62,24 @@ var assert = require('chai').assert;
       recordstore1.sellRecord(record1);
       ;
       assert.equal("The cash balance is £7.5\n. The value of inventory is £17.5", recordstore1.storeFinances());
+    })
+
+    it('cash balance is decreased when inventory is bought', function(){
+      recordstore1.addRecord(record1);
+      recordstore1.addRecord(record2);
+      recordstore1.sellRecord(record1);
+      recordstore1.sellRecord(record2);
+      recordstore1.buyRecord(record3);
+      assert.deepEqual(7, recordstore1.balance);
+    })
+
+    it('item is added to inventory when bought', function(){
+      recordstore1.addRecord(record1);
+      recordstore1.addRecord(record2);
+      recordstore1.sellRecord(record1);
+      recordstore1.sellRecord(record2);
+      recordstore1.buyRecord(record3);
+      assert.deepEqual("Record 1:\nElliott Smith - Figure 8 - 9\n", recordstore1.listInventory());
     })
 
   })

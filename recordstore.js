@@ -20,6 +20,10 @@ RecordStore.prototype = {
     console.log(inventoryString);
     return inventoryString;
   },
+  buyRecord: function(record) {
+     this.balance -= record.price;
+     this.inventory.push(record);
+    },
   sellRecord: function(record) {
    this.balance += record.price;
    this.inventory.splice(_.indexOf(this.inventory, record), 1);
