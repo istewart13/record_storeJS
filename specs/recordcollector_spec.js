@@ -35,7 +35,7 @@ describe('Record Collector', function(){
     recordstore1.addRecord(record2);
     recordstore1.addRecord(record3);
     recordcollector1.buyRecord(record1, recordstore1);
-    assert.deepEqual([{"artist": "Bon Iver", "price": 7.5, "title": "Bon Iver"}], recordcollector1.bought);
+    assert.deepEqual([{"artist": "Bon Iver", "price": 7.5, "title": "Bon Iver"}], recordcollector1.collection);
   })
 
 
