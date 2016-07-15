@@ -55,4 +55,13 @@ var assert = require('chai').assert;
       assert.deepEqual("Record 1:\nGaslight Anthem - American Slang - 8.5\n", recordstore1.listInventory());
     })
 
+    it('store finances are reported accurately', function(){
+      recordstore1.addRecord(record1);
+      recordstore1.addRecord(record2);
+      recordstore1.addRecord(record3);
+      recordstore1.sellRecord(record1);
+      ;
+      assert.equal("The cash balance is £7.5\n. The value of inventory is £17.5", recordstore1.storeFinances());
+    })
+
   })

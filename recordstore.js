@@ -25,8 +25,14 @@ RecordStore.prototype = {
    this.inventory.splice(_.indexOf(this.inventory, record), 1);
   },
   storeFinances: function() {
-
+    var financeString = "";
+    financeString += "The cash balance is £" + this.balance + "\n. ";
+    var inventoryValue = _.sumBy(this.inventory, function(record) {
+      return record.price;
+    });
+    financeString += "The value of inventory is £" + inventoryValue;
+    return financeString;
   }
 }
-// Create a method so that the RecordStore can sell a record. Adjust the cash in bank to take into account the price of the record sold
+// Create a RecordCollector (or customer) constructor who can buy and sell records.
 module.exports = RecordStore;
